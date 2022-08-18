@@ -170,6 +170,11 @@ body {
   color: #fff;
 }
 
+.sign-in-main, .main-user{
+  padding-top: 10px;
+  padding-bottom: 70px;
+}
+
 .sign-in-content {
   box-sizing: border-box;
   background-color: white;
