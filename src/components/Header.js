@@ -3,23 +3,23 @@ import { Link } from "react-router-dom";
 
 function Header() {
     return (
-      <nav class="main-nav">
-        <Link to="/"  class="main-nav-logo">
-          <img class="main-nav-logo-image" src={argentBankLogo} alt="Argent Bank Logo"/>
-          <h1 class="sr-only">Argent Bank</h1>
+      <nav className="main-nav">
+        <Link to="/"  className="main-nav-logo">
+          <img className="main-nav-logo-image" src={argentBankLogo} alt="Argent Bank Logo"/>
+          <h1 className="sr-only">Argent Bank</h1>
         </Link>
         <div>
           <div>
-            <Link to="/signin"  class="main-nav-logo">
-                <i class="fa fa-user-circle"></i> Sign In
+            <Link to="/signin"  className="main-nav-logo">
+                <i className="fa fa-user-circle"></i> Sign In
             </Link>
           </div>
           <div>
-            <Link to="/tony"  class="main-nav-item">
-              <i class="fa fa-user-circle"></i> Tony
+            <Link to="/tony"  className="main-nav-item">
+              <i className="fa fa-user-circle"></i> Tony
             </Link>
-            <Link to="/"  class="main-nav-item">
-              <i class="fa fa-sign-out"></i> Sign Out
+            <Link to="/"  className="main-nav-item">
+              <i className="fa fa-sign-out"></i> Sign Out
             </Link>
           </div>
         </div>
