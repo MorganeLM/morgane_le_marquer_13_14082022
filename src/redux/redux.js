@@ -28,15 +28,21 @@ export const { userLogin, userLogoff } = loginSlice.actions
 const userSlice = createSlice({
     name: 'user',
     initialState: {
-        email: "",
-        password: "",
         firstName: "",
-        lastName: ""
+        lastName: "",
+        email: "",
+        createdAt: "",
+        updatedAt: "",
+        id: ""
     },
     reducers: {
         updateProfile: (state, action) => {
             state.firstName = action.payload.firstName;
             state.lastName = action.payload.lastName;
+            state.email = action.payload.email;
+            state.createdAt = action.payload.createdAt;
+            state.updatedAt = action.payload.updatedAt;
+            state.id = action.payload.id;
         }
     }
 })
