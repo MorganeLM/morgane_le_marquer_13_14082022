@@ -13,7 +13,6 @@ function LoginForm() {
 
     const handleSubmit = (event) => {
         event.preventDefault(event);
-        console.log('remember', remember)
 
         fetch("http://localhost:3001/api/v1/user/login", {
             method: "POST",

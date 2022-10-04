@@ -45,10 +45,14 @@ function WelcomeBanner() {
         <div className="header">
             <h1>Welcome back</h1>
             <form className='user-update-form' onSubmit={handleSubmit}>
-                <input type="text" id="firstname" placeholder={firstName} onChange={e => setNewFirstName(e.target.value)}></input>
-                <input type="text" id="lastname" placeholder={lastName}onChange={e => setNewLastName(e.target.value)}></input>
-                <button type='submit'>Save</button>
-                <button onClick={handleClick}>Cancel</button>
+                <div>
+                    <input type="text" id="firstname" placeholder={firstName} onChange={e => setNewFirstName(e.target.value)}></input>
+                    <input type="text" id="lastname" placeholder={lastName}onChange={e => setNewLastName(e.target.value)}></input>          
+                </div>
+                <div>
+                    <button type='submit'>Save</button>
+                    <button onClick={handleClick}>Cancel</button>
+                </div>
             </form>
         </div>
         : 
