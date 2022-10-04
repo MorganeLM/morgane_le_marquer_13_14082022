@@ -23,10 +23,8 @@ function LoginForm() {
                 })
             })
             .then(async response => {
-                //const isJson = response.headers.get("content-type")?.includes("application/json")
                 const data = await response.json();
                 if (response.ok) {
-                    console.log('data', data)
                     dispatch(userLogin(data.body.token));
                     navigate('/profile');
                 } else {

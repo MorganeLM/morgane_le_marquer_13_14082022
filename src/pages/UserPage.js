@@ -2,23 +2,8 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import WelcomeBanner from '../components/WelcomeBanner';
 import Account from '../components/Account';
-import { useEffect } from 'react';
 
 function UserPage() {
-    useEffect(() => {
-        fetch("http://localhost:3001/api/v1/user/login", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                    email: 'tony@stark.com',
-                    password: 'password123'
-                })
-            })
-            .then(async response => {
-                console.log(response.data)
-            })
-      }, [])
-
   return (
     <div>
       <Header />
