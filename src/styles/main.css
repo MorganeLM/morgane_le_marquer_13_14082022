@@ -318,6 +318,19 @@ body {
   margin-bottom: 12px;
 }
 
+.error-text{
+  width: max-content;
+  margin: auto;
+  margin-top: 20px;
+  border: 1px solid rgb(162, 3, 3);
+  border-radius: 5px;
+  padding: 7px 15px;
+  color: rgb(162, 3, 3);
+  max-width: 200px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
 @media (min-width: 720px) {
   .account {
     flex-direction: row;

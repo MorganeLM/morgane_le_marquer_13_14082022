@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { updateProfile } from '../redux/redux';
 
 
@@ -12,7 +12,15 @@ function WelcomeBanner() {
     const [isEditing, setIsEditing] = useState(false);
     const [newFirstName, setNewFirstName] = useState(firstName);
     const [newLastName, setNewLastName] = useState(lastName);
+    const [error, setError] = useState("");
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        setNewFirstName(firstName);
+    }, [firstName])
+    useEffect(() => {
+        setNewLastName(lastName);
+    }, [lastName])
 
     const handleClick = function(){
         setIsEditing(!isEditing)
@@ -32,8 +40,10 @@ function WelcomeBanner() {
             let data = await response.json();
             dispatch(updateProfile(data.body));
             setIsEditing(false);
+            setError('');
           })
           .catch(error => {
+            setError(error.toString());
             console.error(error)
           })
     }
@@ -47,12 +57,19 @@ function WelcomeBanner() {
             <form className='user-update-form' onSubmit={handleSubmit}>
                 <div>
                     <input type="text" id="firstname" placeholder={firstName} onChange={e => setNewFirstName(e.target.value)}></input>
-                    <input type="text" id="lastname" placeholder={lastName}onChange={e => setNewLastName(e.target.value)}></input>          
+                    <input type="text" id="lastname" placeholder={lastName} onChange={e => setNewLastName(e.target.value)}></input>          
                 </div>
                 <div>
                     <button type='submit'>Save</button>
                     <button onClick={handleClick}>Cancel</button>
                 </div>
+                {
+                    error === "" ?
+                    "" :
+                    <div className="error-text">
+                        {error}
+                    </div>
+                }
             </form>
         </div>
         : 

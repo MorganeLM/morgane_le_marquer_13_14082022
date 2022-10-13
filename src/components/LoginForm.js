@@ -7,40 +7,48 @@ function LoginForm() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [remember, setRemember] = useState(false);
+    const [error, setError] = useState("");
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const handleSubmit = (event) => {
-        event.preventDefault(event);
-
-        fetch("http://localhost:3001/api/v1/user/login", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                    email: username,
-                    password: password
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if(username && password){
+            fetch("http://localhost:3001/api/v1/user/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                        email: username,
+                        password: password
+                    })
                 })
-            })
-            .then(async response => {
-                const data = await response.json();
-                if (response.ok) {
-                    dispatch(userLogin(data.body.token));
-                    navigate('/profile');
-                } else {
-                    console.error('response', response);
-                }
-            })
-            .catch(error => {
-                console.error('error', error);
-            })
+                .then(async response => {
+                    const data = await response.json();
+                    if (response.ok) {
+                        dispatch(userLogin(data.body.token));
+                        navigate('/profile');
+                    } else {
+                        setError(data.message);
+                        console.error('response', response);
+                    }
+                })
+                .catch(error => {
+                    setError(error.toString());
+                    console.error('error', error);
+                })
+        }else{
+            setError('Please complet your username and password.');
+        }
+
+     
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit}>
         <div className="input-wrapper">
             <label htmlFor="username">Username</label>
-            <input type="text" 
+            <input type="email" 
                    id="username"
                    value={username}
                    onChange={(e) => setUsername(e.target.value)} />
@@ -59,6 +67,13 @@ function LoginForm() {
                    onChange={(e) => setRemember(e.target.checked)} />
             <label htmlFor="remember-me">Remember me</label>
         </div>
+        {
+          error === "" ?
+          "" :
+          <div className="error-text">
+            {error}
+          </div>
+        }
         <button className="sign-in-button">Sign In</button>
     </form >);
   }
