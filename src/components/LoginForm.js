@@ -38,7 +38,7 @@ function LoginForm() {
                     console.error('error', error);
                 })
         }else{
-            setError('Please complet your username and password.');
+            setError('Please fill your username and password.');
         }
 
      
