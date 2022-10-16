@@ -27,7 +27,8 @@ function Header() {
           dispatch(updateProfile(data.body));
         })
     }else{
-      navigate("/signin");
+      // navigate("/signin");
+      console.log('user not logged!')
     }
   }, [isUserLogged, dispatch, userToken]);
 

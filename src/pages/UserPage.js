@@ -2,11 +2,23 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import WelcomeBanner from '../components/WelcomeBanner';
 import Account from '../components/Account';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 function UserPage() {
-  return (
+    const isUserLogged = useSelector(state => state.login.isLogged);
+    const navigate = useNavigate();
+    // not logged users are redirected to signin page
+    useEffect(() => {
+        if(!isUserLogged){
+            navigate("/signin")
+          }
+      }, [isUserLogged, navigate]);
+
+    return (
     <div>
-      <Header />
+        <Header />
         <main className="main bg-dark main-user">
             <WelcomeBanner />
             <h2 className="sr-only">Accounts</h2>
@@ -16,7 +28,7 @@ function UserPage() {
         </main>
         <Footer />
     </div>
-  );
+    );
 }
 
 export default UserPage;
