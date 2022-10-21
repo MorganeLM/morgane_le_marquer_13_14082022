@@ -344,3 +344,14 @@ body {
     width: 200px;
   }
 }
+
+@media  screen and (max-width: 500px) {
+  .main-nav-item{
+    visibility: hidden;
+    width: 30px;
+  }
+  .main-nav-item > i{
+    visibility: visible;
+    font-size: 1.8em;
+  }
+}
